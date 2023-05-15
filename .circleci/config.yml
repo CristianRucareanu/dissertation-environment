@@ -29,6 +29,9 @@ jobs:
             name: Build and push Docker image
             command: |
               sudo apt-get purge -y curl && sudo apt-get install -y curl
+              sudo curl -L "https://github.com/docker/compose/releases/download/2.17.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+              sudo chmod +x /usr/local/bin/docker-compose
+              docker-compose --2.17.3
               docker build -t dotnetcoreapi.azurecr.io/dotnet-api:latest .
               docker login -u $DOCKER_USER -p $DOCKER_PASS dotnetcoreapi.azurecr.io
               docker push dotnetcoreapi.azurecr.io/dotnet-api:latest
