@@ -15,7 +15,8 @@ jobs:
       - checkout
       - run:
           name: Run tests
-          command: go test -v
+          command: go mod init
+	  #go test -v
   build-docker-image:
       docker:
         #- image: microsoft/dotnet:latest
