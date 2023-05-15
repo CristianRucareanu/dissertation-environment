@@ -18,9 +18,7 @@ jobs:
           command: go mod init test #go mod init #go test -v
   build-docker-image:
       docker:
-        #- image: microsoft/dotnet:latest
-        #- image: cimg/go:1.18.3
-        - image: mcr.microsoft.com/dotnet/sdk:5.0
+        - image: circleci/node:14
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
       steps:
         - checkout
@@ -30,7 +28,7 @@ jobs:
         - run:
             name: Build and push Docker image
             command: |
-              sudo apt-get update && sudo apt-get install -y curl
+              sudo apt-get purge -y curl && sudo apt-get install -y curl
               docker build -t dotnetcoreapi.azurecr.io/dotnet-api:latest .
               docker login -u $DOCKER_USER -p $DOCKER_PASS dotnetcoreapi.azurecr.io
               docker push dotnetcoreapi.azurecr.io/dotnet-api:latest
