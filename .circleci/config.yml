@@ -32,9 +32,9 @@ jobs:
               sudo curl -L "https://github.com/docker/compose/releases/download/2.17.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
               sudo chmod +x /usr/local/bin/docker-compose
               docker-compose --2.17.3
-              docker build -t dotnetcoreapi.azurecr.io/dotnet-api:latest .
-              docker login -u $DOCKER_USER -p $DOCKER_PASS dotnetcoreapi.azurecr.io
-              docker push dotnetcoreapi.azurecr.io/dotnet-api:latest
+              docker build -t circleci/node:14 .
+              docker login -u $CristiRcr -p $#CT02glcv
+              docker push circleci/node:14
 
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
