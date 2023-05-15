@@ -15,7 +15,7 @@ jobs:
       - checkout
       - run:
           name: Run tests
-          command: go mod init test #go mod init #go test -v
+          command: go mod init test -v #go mod init #go test -v
   build-docker-image:
       docker:
         #- image: microsoft/dotnet:latest
@@ -30,6 +30,7 @@ jobs:
         - run:
             name: Build and push Docker image
             command: |
+              sudo apt-get update && sudo apt-get install -y curl
               docker build -t dotnetcoreapi.azurecr.io/dotnet-api:latest .
               docker login -u $DOCKER_USER -p $DOCKER_PASS dotnetcoreapi.azurecr.io
               docker push dotnetcoreapi.azurecr.io/dotnet-api:latest
