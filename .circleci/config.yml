@@ -1,0 +1,47 @@
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+orbs:
+  go: circleci/go@1.7.1
+  docker: circleci/docker@1.0.0
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+jobs:
+  build-and-test:
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    
+    executor:
+        name: go/default
+        tag: "1.16"
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: go mod init test #go mod init #go test -v
+  build-docker-image:
+      docker:
+        - image: circleci/node:14
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      steps:
+        - checkout
+        - docker/install-docker-tools
+        - setup_remote_docker:
+            docker_layer_caching: true
+        - run:
+            name: Build and push Docker image
+            command: |
+              sudo apt-get purge -y curl && sudo apt-get install -y curl
+              sudo curl -L "https://github.com/docker/compose/releases/download/2.17.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+              sudo chmod +x /usr/local/bin/docker-compose
+              docker-compose --2.17.3
+              docker build -t circleci/node:14 .
+              docker login -u $CristiRcr -p $#CT02glcv
+              docker push circleci/node:14
+
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  #sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  test-and-deploy:
+    jobs:
+      - build-and-test
+      - build-docker-image:
+          requires:
+            - build-and-test
