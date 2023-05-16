@@ -83,13 +83,6 @@ jobs:
 
             sudo apt-get -y install imagemagick x11-apps
 
-      - run:
-            name: Build and push Docker image
-            command: |
-              docker build -t circleci/node:14 .
-              docker login -u $CristiRcr -p $#CT02glcv
-              docker push circleci/node:14
-
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   #sample: # This is the name of the workflow, feel free to change it to better match your workflow.
