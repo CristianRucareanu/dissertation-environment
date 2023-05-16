@@ -30,20 +30,20 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: dotnet test -- dissertation-environment~BehavioursIntegrationConnectGOOGLE
-    build-docker-image:
-      docker:
-        - image: circleci/openjdk:8-jdk
+  build-docker-image:
+    docker:
+      - image: circleci/openjdk:8-jdk
 
-      working_directory: ~/circleCI_Selenium_Demo
+    working_directory: ~/circleCI_Selenium_Demo
 
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-      steps:
-        - checkout
-        - docker/install-docker-tools
-        - setup_remote_docker:
-            docker_layer_caching: true
+    steps:
+      - checkout
+      - docker/install-docker-tools
+      - setup_remote_docker:
+          docker_layer_caching: true
             
-        - run:
+      - run:
 
           name: Install latest version of ChromeDriver Sample
 
@@ -57,7 +57,7 @@ jobs:
 
             sudo apt-get install google-chrome-unstable
             
-        - run:
+      - run:
 
           name: Install latest version of ChromeDriver Sample
 
@@ -83,7 +83,7 @@ jobs:
 
             sudo apt-get -y install imagemagick x11-apps
 
-        - run:
+      - run:
             name: Build and push Docker image
             command: |
               sudo apt-get purge -y curl && sudo apt-get install -y curl
