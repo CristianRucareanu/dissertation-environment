@@ -1,94 +1,57 @@
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 orbs:
-  go: circleci/go@1.7.1
-  docker: circleci/docker@1.0.0
-executors:
-  dotnet-executor:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:5.0
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+  node: circleci/node@5.1.0
 jobs:
-  build-and-test:
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    
-    executor: dotnet-executor
-    steps:
-      - checkout
-      - run:
-          name: Restore NuGet Packages
-          command: dotnet restore
-
-      - run:
-          name: Build Solution
-          command: dotnet build
-
-      - run:
-          name: Run Unit Tests
-          command: dotnet test -- dissertation-environment~BehavioursIntegrationConnectGOOGLE
-
-      - run:
-          name: Run Selenium Tests
-          command: dotnet test -- dissertation-environment~BehavioursIntegrationConnectGOOGLE
-  build-docker-image:
+  build:
     docker:
-      - image: circleci/openjdk:8-jdk
-
-    working_directory: ~/circleCI_Selenium_Demo
-
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      - image: cimg/node:16.10
+        auth:
+          username: CristiRcr
+          password: $#CT02glcv  # context / project UI env-var reference
     steps:
       - checkout
-      - docker/install-docker-tools
-      - setup_remote_docker:
-          docker_layer_caching: true
-            
+      - node/install-packages:
+          pkg-manager: npm
       - run:
+          name: Run tests
+          command: npm test
 
-          name: Install latest version of ChromeDriver Sample
+  test:
+    docker:
+      - image: cimg/node:current
 
-          command: |
+    steps:
+      # Start with the initial build
+      - attach_workspace:
+          at: ~/dissertation-environment/BehavioursIntegrationConnectGOOGLE/
 
-            sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      # Install Testmo CLI tool
+      - run: npm install --no-save @testmo/testmo-cli
 
-            sudo sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-
-            sudo apt-get update
-
-            sudo apt-get install google-chrome-unstable
-            
+      # Run tests and report results to Testmo
       - run:
-
-          name: Install latest version of ChromeDriver Sample
-
           command: |
+            npx testmo automation:run:submit \
+              --instance "$https://github.com/CristianRucareanu/dissertation-environment.git" \
+              --project-id 1 \
+              --name "C# test run" \
+              --source "unit-tests" \
+              --results results/*.xml \
+              -- npm run csharp-selenium # Note space after --
 
-            sudo wget https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip
+# Store test artifacts and results
+      - store_artifacts:
+          path: results
+          destination: test_results
+      - store_test_results:
+          path: results
 
-            sudo unzip -o chromedriver_linux64.zip
-
-            sudo rm chromedriver_linux64.zip
-
-            sudo mv chromedriver /usr/bin/
-
-            sudo chmod 777 /usr/bin/chromedriver
-
-            sudo apt-get install libxi6 libgconf-2-4
-
-            sudo apt-get -y install xvfb gtk2-engines-pixbuf
-
-            sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
-
-            sudo apt-get install xvfb
-
-            sudo apt-get -y install imagemagick x11-apps
-
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  #sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-  test-and-deploy:
+  full:
     jobs:
-      - build-and-test
-      - build-docker-image:
+      - build
+      - test:
           requires:
-            - build-and-test
+            - build
+          context:
+            - testmo
