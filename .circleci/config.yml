@@ -13,7 +13,7 @@ jobs:
 
   build-docker-image:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: mcr.microsoft.com/dotnet/sdk:5.0
 
     working_directory: ~/circleCI_Selenium_Demo
 
@@ -70,14 +70,14 @@ jobs:
               sudo apt-get purge -y curl && sudo apt-get install -y curl
               sudo curl -L "https://github.com/docker/compose/releases/download/2.17.3/docker-compose-$(CristiRcr -s)-$(CristiRcr -m)" -o /usr/local/bin/docker-compose
               sudo chmod +x /usr/local/bin/docker-compose
-              docker-compose version
+              docker-compose
               docker build -t circleci/node:14 .
               docker login -u $CristiRcr -p $#CT02glcv
               docker push circleci/node:14
 
   test:
     docker:
-      - image: cimg/node:current
+      - image: mcr.microsoft.com/dotnet/sdk:5.0
 
     steps:
       # Start with the initial build
