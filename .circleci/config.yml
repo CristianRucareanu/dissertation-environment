@@ -1,20 +1,79 @@
 version: 2.1
 orbs:
   node: circleci/node@5.1.0
-jobs:
-  build:
+  docker: circleci/docker@1.0.0
+
+executors:
+  dotnet-executor:
     docker:
-      - image: cimg/node:16.10
-        auth:
-          username: CristiRcr
-          password: $#CT02glcv  # context / project UI env-var reference
+      - image: mcr.microsoft.com/dotnet/sdk:5.0
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+
+jobs:
+
+  build-docker-image:
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+    working_directory: ~/circleCI_Selenium_Demo
+
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
+      - docker/install-docker-tools
+      - setup_remote_docker:
+          docker_layer_caching: true
+            
       - run:
-          name: Run tests
-          command: npm test
+
+          name: Install latest version of ChromeDriver Sample
+
+          command: |
+
+            sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
+            sudo sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
+            sudo apt-get update
+
+            sudo apt-get install google-chrome-unstable
+            
+      - run:
+
+          name: Install latest version of ChromeDriver Sample
+
+          command: |
+
+            sudo wget https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip
+
+            sudo unzip -o chromedriver_linux64.zip
+
+            sudo rm chromedriver_linux64.zip
+
+            sudo mv chromedriver /usr/bin/
+
+            sudo chmod 777 /usr/bin/chromedriver
+
+            sudo apt-get install libxi6 libgconf-2-4
+
+            sudo apt-get -y install xvfb gtk2-engines-pixbuf
+
+            sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
+
+            sudo apt-get install xvfb
+
+            sudo apt-get -y install imagemagick x11-apps
+
+      - run:
+            name: Build and push Docker image
+            command: |
+              sudo apt-get purge -y curl && sudo apt-get install -y curl
+              sudo curl -L "https://github.com/docker/compose/releases/download/2.17.3/docker-compose-$(CristiRcr -s)-$(CristiRcr -m)" -o /usr/local/bin/docker-compose
+              sudo chmod +x /usr/local/bin/docker-compose
+              docker-compose version
+              docker build -t circleci/node:14 .
+              docker login -u $CristiRcr -p $#CT02glcv
+              docker push circleci/node:14
 
   test:
     docker:
@@ -47,11 +106,11 @@ jobs:
           path: results
 
 workflows:
-  full:
+  test-and-deploy:
     jobs:
-      - build
+      - build-docker-image
       - test:
           requires:
-            - build
+            - build-docker-image
           context:
             - testmo
