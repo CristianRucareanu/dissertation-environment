@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: mcr.microsoft.com/dotnet/framework/sdk:4.7
+      - image: mcr.microsoft.com/dotnet/framework:4.7.2
 
     working_directory: ~/dissertation-environment/BehavioursIntegrationConnectGOOGLE/
 
@@ -20,7 +20,7 @@ jobs:
 
   test:
     docker:
-      - image: mcr.microsoft.com/dotnet/framework/sdk:4.7
+      - image: mcr.microsoft.com/dotnet/framework:4.7.2
 
     steps:
       # Start with the initial build
