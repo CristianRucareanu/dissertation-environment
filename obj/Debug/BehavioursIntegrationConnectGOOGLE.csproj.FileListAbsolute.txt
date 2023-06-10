@@ -22,3 +22,11 @@ C:\Users\Cristi\source\repos\TravisSelenium\BehavioursIntegrationConnectGOOGLE\o
 C:\Users\Cristi\source\repos\TravisSelenium\BehavioursIntegrationConnectGOOGLE\obj\Debug\BehavioursIntegrationConnectGOOGLE.csproj.CopyComplete
 C:\Users\Cristi\source\repos\TravisSelenium\BehavioursIntegrationConnectGOOGLE\obj\Debug\BehavioursIntegrationConnectGOOGLE.dll
 C:\Users\Cristi\source\repos\TravisSelenium\BehavioursIntegrationConnectGOOGLE\obj\Debug\BehavioursIntegrationConnectGOOGLE.pdb
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.dll
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.pdb
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.csproj.AssemblyReference.cache
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.csproj.CoreCompileInputs.cache
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\bin\Debug\BehavioursIntegrationConnectGOOGLE.dll.config
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\bin\Debug\BehavioursIntegrationConnectGOOGLE.dll
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\bin\Debug\BehavioursIntegrationConnectGOOGLE.pdb
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.csproj.CopyComplete

@@ -38,8 +38,8 @@ namespace CBT_NUnit
 
                 driver.Manage().Window.Maximize();
                 var test_environment = TestContext.Parameters.Get("test_environment", "DefaultValue");
-                driver.Navigate().GoToUrl(test_environment + "player.htm?f=NJghgAcC");
-                //driver.Navigate().GoToUrl("https://testing.perfectforms.com/player.htm?f=NJghgAcC");
+                //driver.Navigate().GoToUrl(test_environment + "player.htm?f=NJghgAcC");
+                driver.Navigate().GoToUrl("https://testing.perfectforms.com/player.htm?f=NJghgAcC");
 
                 //Console.WriteLine(test_environment + "player.htm?f=NJghgAcC");
 

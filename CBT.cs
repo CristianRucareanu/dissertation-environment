@@ -14,9 +14,9 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
-using Microsoft.Edge.SeleniumTools;
-using EdgeOptions = Microsoft.Edge.SeleniumTools.EdgeOptions;
-using EdgeDriver = Microsoft.Edge.SeleniumTools.EdgeDriver;
+//using Microsoft.Edge.SeleniumTools;
+//using EdgeOptions = Microsoft.Edge.SeleniumTools.EdgeOptions;
+//using EdgeDriver = Microsoft.Edge.SeleniumTools.EdgeDriver;
 
 // There are a couple components we’ll need. We’ll separate starting/closing our WebDriver and running our tests. For starting up, we can use this code to generate our WebDriver
 namespace CBT_NUnit
@@ -197,7 +197,7 @@ namespace CBT_NUnit
                     break;
                 case "local_edge":
                     var options = new EdgeOptions();
-                    options.UseChromium = true;
+                    //options.UseChromium = true;
                     driver = new EdgeDriver(@"C:\edgedriver_win64", options);
                     break;
                 default:
