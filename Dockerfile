@@ -5,7 +5,7 @@ WORKDIR /DissertationEnviroment
 COPY BehavioursIntegrationConnectGOOGLE.csproj ./
 RUN dotnet restore
 COPY . .
-RUN dotnet publish -c Release -o publish
+RUN dotnet publish -c Debug -o publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
 WORKDIR /DissertationEnviroment
