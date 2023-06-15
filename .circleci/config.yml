@@ -10,16 +10,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
-          command: |
-            npm install
-            npm install wait-on
-      - run:
           name: Run Tests
           command: |
-            npm docker run -d -p 5000:80 --name selenium cristircr/selenium
+            docker run -d -p 5000:80 --name selenium cristircr/selenium
       - store_artifacts:
-          path: bin\Release
+          path: bin/Release
           destination: .circleci
 
 workflows:
