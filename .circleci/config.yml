@@ -1,14 +1,32 @@
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.4.0
 jobs:
   build:
     docker:
       - image: cristircr/selenium:latest
+      - image: selenium/standalone-chrome:3.11.0
+      - image: cimg/node:19.3.0-browsers
+    environment:
+      TERM: xterm
     steps:
       - checkout
       - run:
-          name: Run Tests
+          name: Install Dependencies
           command: |
-            dotnet BehavioursIntegrationConnectGOOGLE.dll
+            npm install selenium-webdriver
+      - run:
+          command: |
+            google-chrome --version
+            chromedriver --version
+      - run:
+          name: Upgrade pip
+          command: |
+            pip install --upgrade pip
+      - run:
+          name: Run Selenium Tests
+          command: |
+            dotnet -m csharptest BehavioursIntegrationConnectGOOGLE.dll
       - store_artifacts:
           path: bin/Release
           destination: .circleci
