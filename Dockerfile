@@ -2,13 +2,12 @@
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as build-env
 WORKDIR /DissertationEnviroment
-COPY DissertationEnviroment/BehavioursIntegrationConnectGOOGLE.csproj .
+COPY BehavioursIntegrationConnectGOOGLE.csproj ./
 RUN dotnet restore
-COPY DissertationEnviroment .
-RUN dotnet bin/Debug -c Release -o /bin/Debug
+COPY . .
+RUN dotnet publish -c Release -o publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
-WORKDIR /bin/Debug
-COPY --from=build-env /bin/Debug .
-EXPOSE 80
+WORKDIR /DissertationEnviroment
+COPY --from=build-env /DissertationEnviroment/publish .
 ENTRYPOINT ["dotnet", "BehavioursIntegrationConnectGOOGLE.dll"]
