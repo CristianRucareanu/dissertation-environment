@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: |
-            dotnet DissertationEnviroment/BehavioursIntegrationConnectGOOGLE.dll
+            dotnet DissertationEnviroment/publish/BehavioursIntegrationConnectGOOGLE.dll
       - store_artifacts:
           path: bin/Release
           destination: .circleci
