@@ -12,7 +12,6 @@ jobs:
       - store_artifacts:
           path: bin/Release
           destination: .circleci
-          
 workflows:
   version: 2
   full:
