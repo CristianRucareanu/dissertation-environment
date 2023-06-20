@@ -29,3 +29,4 @@ C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\Beh
 C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.csproj.CopyComplete
 C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.dll
 C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.pdb
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\BehavioursIntegrationConnectGOOGLE.csproj.AssemblyReference.cache
