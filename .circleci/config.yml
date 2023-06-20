@@ -5,10 +5,10 @@ jobs:
       - image: cristircr/selenium:latest
     steps:
       - checkout
-      #- run:
-          #name: Run Selenium Tests
-          #command: |
-            #dotnet bin/Debug/BehavioursIntegrationConnectGOOGLE.dll
+      - run:
+          name: Run Selenium Tests
+          command: |
+            dotnet bin/Debug/BehavioursIntegrationConnectGOOGLE.dll
       - store_artifacts:
           path: bin/Release
           destination: .circleci
