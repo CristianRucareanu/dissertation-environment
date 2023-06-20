@@ -17,3 +17,42 @@
     }
   }
 }
+{
+  "runtimeOptions": {
+    "tfm": "netcoreapp6.0.15",
+	"buildOptions": {
+        "emitEntryPoint": true
+    }, 
+    "framework": {
+      "name": "Microsoft.NETCore.App",
+      "version": "6.0.15"
+    },
+    "configProperties": {
+      "System.Globalization.UseNls": true,
+      "System.Net.DisableIPv6": true,
+      "System.GC.Concurrent": false,
+      "System.Threading.ThreadPool.MinThreads": 4,
+      "System.Threading.ThreadPool.MaxThreads": 25
+    }
+  }
+>>>>>>> 38a9cf3d19f0e796be5b026f0f45863d6a2bfec9
+}{
+  "runtimeOptions": {
+    "tfm": "netcoreapp6.0.15",
+	"buildOptions": {
+        "emitEntryPoint": true
+    }, 
+    "framework": {
+      "name": "Microsoft.NETCore.App",
+      "version": "6.0.15"
+    },
+    "configProperties": {
+      "System.Globalization.UseNls": true,
+      "System.Net.DisableIPv6": true,
+      "System.GC.Concurrent": false,
+      "System.Threading.ThreadPool.MinThreads": 4,
+      "System.Threading.ThreadPool.MaxThreads": 25
+    }
+  }
+>>>>>>> 38a9cf3d19f0e796be5b026f0f45863d6a2bfec9
+}
