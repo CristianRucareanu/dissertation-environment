@@ -9,5 +9,5 @@ RUN dotnet publish -c Debug -o publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
 WORKDIR /DissertationEnviroment
-COPY --from=build-env /DissertationEnviroment/publish .
+COPY --from=build-env . .
 ENTRYPOINT ["dotnet", "BehavioursIntegrationConnectGOOGLE.dll"]
