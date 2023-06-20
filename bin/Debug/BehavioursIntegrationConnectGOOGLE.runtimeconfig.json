@@ -1,7 +1,7 @@
 {
   "runtimeOptions": {
     "tfm": "netcoreapp6.0.15",
-	"buildOptions": {
+	  "buildOptions": {
         "emitEntryPoint": true
     }, 
     "framework": {
