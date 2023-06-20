@@ -5,9 +5,9 @@ WORKDIR /DissertationEnviroment
 COPY BehavioursIntegrationConnectGOOGLE.csproj ./
 RUN dotnet restore
 COPY . .
-RUN dotnet publish -c Debug -o /bin/Debug
+RUN dotnet publish -c Debug -o /bin
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
 WORKDIR /DissertationEnviroment
-COPY --from=build-env /bin/Debug ./
+COPY --from=build-env /bin ./
 ENTRYPOINT ["dotnet", "BehavioursIntegrationConnectGOOGLE.dll"]
