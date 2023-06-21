@@ -12,6 +12,7 @@ jobs:
       - store_artifacts:
           path: bin/Release
           destination: .circleci
+          
 services:
   mcr.microsoft.com/dotnet/aspnet:6.0:
     build: .
