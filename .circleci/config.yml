@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: |
-            dotnet bin/Debug/BehavioursIntegrationConnectGOOGLE.dll
+            dotnet vstest bin\Debug\BehavioursIntegrationConnectGOOGLE.dll
       - store_artifacts:
           path: bin/Release
           destination: .circleci
