@@ -6,6 +6,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Dependencies
+          command: |
+            RUN & "$env:TEMP\vs_community.exe" --add Microsoft.VisualStudio.Workload.NetWeb --includeRecommended --quiet --wait --norestart --noUpdateInstaller | Out-Default
+      - run:
           name: Run Selenium Tests
           command: |
             vstest.console.exe BehavioursIntegrationConnectGOOGLE.dll /TestAdapterPath:"."
