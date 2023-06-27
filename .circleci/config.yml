@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            RUN & "$env:TEMP\vs_community.exe" --add Microsoft.VisualStudio.Workload.NetWeb --includeRecommended --quiet --wait --norestart --noUpdateInstaller | Out-Default
+            winget install --id Microsoft.VisualStudio.2019.Community
       - run:
           name: Run Selenium Tests
           command: |
