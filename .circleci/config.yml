@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: |
-            dotnet test ".\TravisSelenium\DissertationEnviroment\BehavioursIntegrationConnectGOOGLE.sln" -c Debug -v n
+            dotnet ".\TravisSelenium\DissertationEnviroment\BehavioursIntegrationConnectGOOGLE.sln" -c Debug -v n
       - store_artifacts:
           path: bin/Release
           destination: .circleci
