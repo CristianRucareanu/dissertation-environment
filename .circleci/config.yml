@@ -8,7 +8,6 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: |
-            dotnet restore "BehavioursIntegrationConnectGOOGLE.csproj"
             dotnet build "BehavioursIntegrationConnectGOOGLE.csproj" -c Debug
             dotnet test "BehavioursIntegrationConnectGOOGLE.csproj" -c Debug
       - store_artifacts:
