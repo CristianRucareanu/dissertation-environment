@@ -207,6 +207,11 @@ namespace CBT_NUnit
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
         }
 
+        public void ContinuousIntegration()
+        {
+            Initialize();
+        }
+
         public void setScore(string sessionId, string score)
         {
             string url = BaseURL + "/" + sessionId;
