@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cristircr_automation:latest
+      - image: cristircr_automation
     steps:
       - checkout
       - run:
