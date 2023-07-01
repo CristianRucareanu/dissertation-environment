@@ -2,6 +2,10 @@ version: 2.1
 orbs:
   win: circleci/windows@5.0
 jobs:
+  pre:
+    executor: win/default
+    steps:
+      - run: dotnet tool install --global PowerShell
   build:
     docker:
       - image: cristircr/selenium:latest
@@ -29,4 +33,7 @@ workflows:
   version: 2
   full:
     jobs:
-      - build
+      - pre
+      - build:
+          requires:
+            - pre
