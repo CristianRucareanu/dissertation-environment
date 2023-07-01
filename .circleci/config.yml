@@ -12,10 +12,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
-          command: |
-            wget install --id Microsoft.VisualStudio.2019.Community
-      - run:
           name: Run Selenium Tests
           command: |
            dotnet vstest "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" /TestAdapterPath:"."
