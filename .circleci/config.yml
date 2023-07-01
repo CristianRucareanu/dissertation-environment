@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: |
-            vstest.console.exe BehavioursIntegrationConnectGOOGLE.dll /TestAdapterPath:"."
+           dotnet vstest "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" -t
       - store_artifacts:
           path: bin/Release
           destination: .circleci
