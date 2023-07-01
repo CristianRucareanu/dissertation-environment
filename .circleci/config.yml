@@ -12,16 +12,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
-          command: |
-            winget install --id Microsoft.VisualStudio.2019.Community
-      - run:
           name: Run Selenium Tests
           command: |
-           dotnet vstest "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" /TestAdapterPath:"."
+           dotnet "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" /TestAdapterPath:"."
       - store_artifacts:
           path: bin/Release
           destination: .circleci
+
 services:
   mcr.microsoft.com/dotnet/framework/sdk:4.8:
   mcr.microsoft.com/dotnet/framework/aspnet:4.8:
