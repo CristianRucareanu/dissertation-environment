@@ -1,0 +1,4 @@
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\net452\BehavioursIntegrationConnectGOOGLE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\net452\BehavioursIntegrationConnectGOOGLE.AssemblyInfoInputs.cache
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\net452\BehavioursIntegrationConnectGOOGLE.AssemblyInfo.cs
+C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment\obj\Debug\net452\BehavioursIntegrationConnectGOOGLE.csproj.CoreCompileInputs.cache

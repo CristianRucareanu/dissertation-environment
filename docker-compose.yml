@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  automation_sdk:
+    container_name: automation_sdk
+    image: mcr.microsoft.com/dotnet/framework/sdk:4.8
+    networks:
+      - integration
+  behavioursintegrationconnectgoogle:
+    container_name: behavioursintegrationconnectgoogle
+    image: mcr.microsoft.com/dotnet/framework/aspnet:4.8
+    depends_on:
+      - automation_sdk
+    networks:
+      - integration
+    volumes:
+      - circleci:C:\Users\Cristi\source\repos\TravisSelenium\DissertationEnviroment
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+
+networks:
+  integration:
+
+volumes:
+  circleci:
+    external: true
