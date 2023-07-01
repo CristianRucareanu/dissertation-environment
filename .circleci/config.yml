@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cristircr_automation
+      - image: cristircr/selenium:latest
     steps:
       - checkout
       - run:
