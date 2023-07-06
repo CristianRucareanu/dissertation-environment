@@ -16,7 +16,7 @@ jobs:
           command: |
            dotnet restore
            msbuild
-           dotnet "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" --filter "CBT_NUnit.CBTAPI.Initialize"
+           dotnet test "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" --filter "CBT_NUnit.CBTAPI.Initialize"
       - store_artifacts:
           path: bin/Release
           destination: .circleci
