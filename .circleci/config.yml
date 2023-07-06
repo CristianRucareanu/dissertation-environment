@@ -27,7 +27,6 @@ services:
     build: .
     depends_on:
       - mcr.microsoft.com/dotnet/framework/sdk:4.8
- 
 workflows:
   version: 2
   full:
