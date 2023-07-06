@@ -14,8 +14,7 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: |
-           apt update && apt install -qy --no-install-recommends mono-runtime libfsharp-core4.3-cil
-           dotnet test "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" --filter "CBT_NUnit.CBTAPI.Initialize" --no-restore
+           mono "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll"
       - store_artifacts:
           path: bin/Release
           destination: .circleci
