@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Run Selenium Tests
           command: |
-           mono "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll"
+           dotnet test "bin/Debug/BehavioursIntegrationConnectGOOGLE.dll" --filter "CBT_NUnit.CBTAPI.Initialize" --no-restore
       - store_artifacts:
           path: bin/Release
           destination: .circleci
