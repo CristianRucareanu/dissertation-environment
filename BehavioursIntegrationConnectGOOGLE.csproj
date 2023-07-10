@@ -67,10 +67,15 @@
   <ItemGroup>
     <Compile Include="CBT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="REST_PROD_AccuWheather.cs" />
+    <Compile Include="REST_PROD_AuthorizeNET.cs" />
+    <Compile Include="REST_PROD_BOX.cs" />
+    <Compile Include="TC_Beh_Connect_DB_OraSER_Insert_MParam.cs" />
     <Compile Include="TC_Beh_Connect_GOOGLE_Delete.cs" />
-    <Compile Include="TC_Beh_Connect_GOOGLE_Insert.cs" />
-    <Compile Include="TC_Beh_Connect_GOOGLE_Select.cs" />
-    <Compile Include="TC_Beh_Connect_GOOGLE_Update.cs" />
+    <Compile Include="TC_Beh_Int_CopyFields_Checkbox_InputChkBox.cs" />
+    <Compile Include="TC_Beh_Int_Date_IsEmpty_MB.cs" />
+    <Compile Include="TC_Beh_Int_Funct_Count_Table_Checkbox.cs" />
+    <Compile Include="TC_PW_Sanity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

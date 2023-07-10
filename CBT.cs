@@ -96,19 +96,34 @@ namespace CBT_NUnit
                     caps.AddMetadataSetting("name", "Template_test");
                     break;
 
-                case "TC_Beh_Connect_GOOGLE_Insert":
-                    caps.AddMetadataSetting("name", "TC_Beh_Connect_GOOGLE_Insert");
-                    break;
-                case "TC_Beh_Connect_GOOGLE_Select":
-                    caps.AddMetadataSetting("name", "TC_Beh_Connect_GOOGLE_Select");
-                    break;
-                case "TC_Beh_Connect_GOOGLE_Update":
-                    caps.AddMetadataSetting("name", "TC_Beh_Connect_GOOGLE_Update");
-                    break;
+
                 case "TC_Beh_Connect_GOOGLE_Delete":
                     caps.AddMetadataSetting("name", "TC_Beh_Connect_GOOGLE_Delete");
                     break;
-
+                case "REST_PROD_AccuWheather":
+                    caps.AddMetadataSetting("name", "REST_PROD_AccuWheather");
+                    break;
+                case "REST_PROD_AuthorizeNET":
+                    caps.AddMetadataSetting("name", "REST_PROD_AuthorizeNET");
+                    break;
+                case "REST_PROD_BOX":
+                    caps.AddMetadataSetting("name", "REST_PROD_BOX");
+                    break;
+                case "TC_Beh_Connect_DB_OraSER_Insert_MParam":
+                    caps.AddMetadataSetting("name", "TC_Beh_Connect_DB_OraSER_Insert_MParam");
+                    break;
+                case "TC_Beh_Int_CopyFields_Checkbox_InputChkBox":
+                    caps.AddMetadataSetting("name", "TC_Beh_Int_CopyFields_Checkbox_InputChkBox");
+                    break;
+                case "TC_Beh_Int_Date_IsEmpty_MB":
+                    caps.AddMetadataSetting("name", "TC_Beh_Int_Date_IsEmpty_MB");
+                    break;
+                case "TC_Beh_Int_Funct_Count_Table_Checkbox":
+                    caps.AddMetadataSetting("name", "TC_Beh_Int_Funct_Count_Table_Checkbox");
+                    break;
+                case "TC_PW_Sanity":
+                    caps.AddMetadataSetting("name", "TC_PW_Sanity");
+                    break;
 
 
                 default:
